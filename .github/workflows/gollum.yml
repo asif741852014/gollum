@@ -1,0 +1,17 @@
+# .github/workflows/on-gollum.yml
+name: Wiki Update Trigger
+
+on:
+  gollum:
+
+jobs:
+  handle-wiki-update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Log Wiki Update
+        run: |
+          echo "A Wiki page was created or updated!"
+          echo "Page Title: ${{ github.event.pages[0].title }}"
+          echo "Action: ${{ github.event.pages[0].action }}"
+          echo "Page URL: ${{ github.event.pages[0].html_url }}"
